@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-terminal-bg: #05070A;
+  --color-terminal-panel: #0E121A;
+  --color-terminal-panel-light: #05070A;
+  --color-sovereign-gold: #D4AF37;
+  --color-neon-blue: #00D1FF;
+  --color-neon-cyan: #00D1FF;
+  --color-neon-pink: #ff007f;
+  --color-neon-green: #00FF94;
+  --color-neon-red: #FF3B3B;
+  
+  --font-sans: "Inter", "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow-pulse: glowPulse 2s ease-in-out infinite;
+}
+
+@layer base {
+  body {
+    background-color: #05070A;
+    color: #E0E2E5;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom terminal background components */
+.terminal-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+}
+
+.terminal-radial-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(0, 209, 255, 0.03) 0%, rgba(5, 7, 10, 0) 70%);
+}
+
+.terminal-cyan-glow-point {
+  background: radial-gradient(circle at 10% 20%, rgba(0, 209, 255, 0.05) 0%, transparent 40%);
+}
+
+.terminal-gold-glow-point {
+  background: radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 40%);
+}
+
+/* Glassmorphism terminal panels */
+.terminal-card {
+  background: #0E121A;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+}
+
+.terminal-card-interactive {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.terminal-card-interactive:hover {
+  border-color: rgba(0, 209, 255, 0.15);
+  box-shadow: 0 0 20px rgba(0, 209, 255, 0.03);
+  background: #111622;
+}
+
+/* Glow indicators */
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.4;
+    filter: drop-shadow(0 0 2px rgba(0, 209, 255, 0.15));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(0, 209, 255, 0.5));
+  }
+}
+
+.glow-cyan {
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(3, 5, 8, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 255, 255, 0.3);
+}
+
+/* Scanline Overlay styling for retro-high tech feeling */
+.terminal-scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 99;
+}
+
+/* Monospace spacing overrides */
+.font-mono-numbers {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}

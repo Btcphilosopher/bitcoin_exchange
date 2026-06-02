@@ -1,0 +1,6 @@
+{
+  "name": "Sovereign Bitcoin Exchange",
+  "description": "An institutional-grade Bitcoin and stablecoin trading platform with an Anglo-futuristic financial terminal aesthetic.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
